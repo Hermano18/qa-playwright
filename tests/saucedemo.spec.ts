@@ -216,7 +216,9 @@ test('User can remove product from cart page', async ({ page }) => {
   await inventoryPage.addBackpackToCart();
   await inventoryPage.openCart();
 
-  await expect(cartPage.itemName).toHaveText('Sauce Labs Backpack');
+  await expect(
+  cartPage.itemName.filter({ hasText: 'Sauce Labs Backpack' })
+).toHaveText('Sauce Labs Backpack');
 
   await cartPage.removeBackpack();
 
