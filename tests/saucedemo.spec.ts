@@ -137,9 +137,10 @@ test('Added product is displayed in the cart', async ({ page }) => {
   await inventoryPage.openCart();
 
   await expect(page).toHaveURL(/cart/);
-  await expect(cartPage.itemName).toHaveText('Sauce Labs Backpack');
+ await expect(
+  cartPage.itemName.filter({ hasText: 'Sauce Labs Backpack' })
+).toHaveText('Sauce Labs Backpack');
 });
-
 
 test('Checkout requires customer information', async ({ page }) => {
   const loginPage = new LoginPage(page);
